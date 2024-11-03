@@ -1,0 +1,51 @@
+{
+	// IntelliSense を使用して利用可能な属性を学べます。
+	// 既存の属性の説明をホバーして表示します。
+	// 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "10.ブラウザ版",
+			"request": "launch",
+			"type": "pwa-node",
+			"runtimeExecutable": "npm",
+			"runtimeArgs": [
+				"run-script",
+				"watch:wdsdbg"
+			],
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"console": "internalConsole",
+			"internalConsoleOptions": "openOnSessionStart"
+		},
+		{
+			"name": "1.アプリ版",
+			"request": "launch",
+			"type": "node",
+			"port": 3776,
+			"console": "internalConsole",
+			"internalConsoleOptions": "openOnSessionStart"
+		},
+		{
+			"name": "2.デバッガ",
+			"request": "attach",
+			"type": "skynovel",
+			"port": 3776,
+				// 【1.アプリ版】port や【package.json watch:wdsdbg】 とあわせる
+			"weburi": "http://localhost:8080",
+				// core/wds.config.js devServer.port とあわせる（省略時は8080）
+			"stopOnEntry": false
+		}
+	],
+	"compounds": [
+		{
+			"name": "appデバッグ",
+			"configurations": ["1.アプリ版", "2.デバッガ"]
+		},
+		{
+			"name": "webデバッグ",
+			"configurations": ["10.ブラウザ版", "2.デバッガ"]
+		}
+	]
+}

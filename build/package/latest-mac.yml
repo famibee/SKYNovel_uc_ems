@@ -1,0 +1,8 @@
+version: 1.0.0
+files:
+  - url: uc-1.0.0.dmg
+    sha512: OJVmxC/Uq1LjH3GrppLJdL1P+JnFA+27eroRAmshbA2qi8j5iTpCaBAsnePiXo8VgIxO2/0/H0CK0pxdPPaPfQ==
+    size: 122898538
+path: uc-1.0.0.dmg
+sha512: OJVmxC/Uq1LjH3GrppLJdL1P+JnFA+27eroRAmshbA2qi8j5iTpCaBAsnePiXo8VgIxO2/0/H0CK0pxdPPaPfQ==
+releaseDate: '2021-10-16T10:12:33.996Z'
