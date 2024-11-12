@@ -4,7 +4,7 @@ function replaceText(sel, txt) {
   if (el) el.innerText = txt;
 }
 window.addEventListener("DOMContentLoaded", () => {
-  console.log(`fn:renderer.ts line:11 etkAPI:%o`, etkAPI);
+  console.log(`fn:renderer.ts line:18 etkAPI:%o`, etkAPI);
   const ver = etkAPI.process.versions;
   replaceText(".electron-version", `Electron v${ver.electron}`);
   replaceText(".chrome-version", `Chromium v${ver.chrome}`);

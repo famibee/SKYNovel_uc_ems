@@ -5,7 +5,6 @@ import __cjs_mod__ from "node:module";
 const __filename = import.meta.filename;
 const __dirname = import.meta.dirname;
 const require2 = __cjs_mod__.createRequire(import.meta.url);
-const icon = join(__dirname, "./chunks/icon-BG97WgHO.png");
 const name = "uc";
 const version = "1.0.0";
 const productName = "桜の樹の下には";
@@ -33,13 +32,19 @@ const devDependencies = {
   electron: "^33.2.0",
   "electron-builder": "^25.1.8",
   "electron-vite": "^2.3.0",
-  vite: "^5.4.10"
+  vite: "^5.4.11"
 };
 const scripts = {
-  start: "electron-vite preview",
-  dev: "vite",
-  build: "tsc && vite build",
-  preview: "vite preview",
+  web_dev: "vite",
+  web_prd: "tsc && vite build",
+  web_pv: "vite preview",
+  app_dev: "electron-vite dev",
+  app_dev_rnd: "vite src/renderer",
+  app_prd: "electron-vite build",
+  app_pv: "electron-vite preview",
+  "pkg:win": "electron-vite build && electron-builder --win",
+  "pkg:mac": "electron-vite build && electron-builder --mac",
+  "pkg:linux": "electron-vite build && electron-builder --linux",
   npm_check_updates: "ncu -u --target minor && npm update && ncu -g"
 };
 const build = {
@@ -158,9 +163,8 @@ app.whenReady().then(async () => {
     height: 670,
     show: false,
     autoHideMenuBar: true,
-    ...process.platform === "linux" ? { icon } : {},
     webPreferences: {
-      preload: join(__dirname, "../preload/index.mjs"),
+      preload: join(__dirname, "../preload/preload.mjs"),
       sandbox: false
     }
   });

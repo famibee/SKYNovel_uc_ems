@@ -9,7 +9,6 @@
 import {crashReporter, app, BrowserWindow, ipcMain, Menu} from 'electron'
 import {join} from 'path'
 import {electronApp, optimizer, is} from '@electron-toolkit/utils'
-import icon from '../icon.png?asset'
 
 import pkg from '../../package.json';
 app.name = pkg.name;	// 非パッケージだと 'Electron' になる件対応
@@ -48,9 +47,8 @@ app.whenReady().then(async ()=> {
 		height: 670,
 		show: false,
 		autoHideMenuBar: true,
-		...(process.platform === 'linux' ?{icon} :{}),
 		webPreferences: {
-			preload: join(__dirname, '../preload/index.mjs'),
+			preload: join(__dirname, '../preload/preload.mjs'),
 			sandbox: false,
 		}
 	});
@@ -62,7 +60,7 @@ app.whenReady().then(async ()=> {
 	// );
 
 
-	const isMac = (process.platform === 'darwin');
+	const isMac = process.platform === 'darwin';
 	const menu = Menu.buildFromTemplate([{
 		label: 'システム',
 		submenu: [

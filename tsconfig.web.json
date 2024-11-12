@@ -1,7 +1,14 @@
 {
 	"extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
-	"include": ["src/renderer/**/*.ts", "src/preload/*.d.ts"],
+	"include": [
+		"src/web.ts",
+		"src/renderer/**/*.ts",
+		"src/preload/*.d.ts",
+	],
 	"compilerOptions": {
-		"composite": true
+		/* Bundler mode */
+		"moduleResolution": "bundler",
+
+		"composite": true,
 	}
 }
